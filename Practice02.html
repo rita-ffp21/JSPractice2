@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lag="ja">
+
+<head>
+  <meta carset="utf-8" />
+  <title>課題2-①</title>
+</head>
+
+<body>
+  <h1>FizzBuzz問題</h1>
+  <form>
+    <p>FizzNum: <input type="text" id="fizzInput" placeholder="整数値を入力して下さい" size="30"></p>
+    <p>BuzzNum: <input type="text" id="buzzInput" placeholder="整数値を入力して下さい" size="30"></p>
+    <p><input type="submit" value="送信" id="btn"></p>
+    <ul id="output"></ul>
+  </form>
+
+  <script>
+
+    const fizzForm = document.getElementById('fizzInput');
+    const buzzForm = document.getElementById('buzzInput');
+    const btn = document.getElementById('btn');
+    const output = document.getElementById('output');
+
+
+    document.querySelector('form').addEventListener('submit', e => {
+      e.preventDefault();
+
+      const fizzNum = parseFloat(fizzForm.value);
+      const buzzNum = parseFloat(buzzForm.value);
+
+      for (let i = 1; i <= 100; i++) {
+        const item = document.createElement('li')
+
+        if (i % fizzNum === 0 && i % buzzNum === 0) {
+          item.innerHTML = 'FizzBuzz ' + i;
+
+        } else if (i % fizzNum === 0) {
+          item.textContent = 'Fizz ' + i;
+
+        } else if (i % buzzNum === 0) {
+          item.textContent = 'Buzz ' + i;
+        } else {
+          item.style.display ="none";
+        }
+        output.appendChild(item);
+      }
+
+    });
+
+  </script>
+</body>
+
+</html>
