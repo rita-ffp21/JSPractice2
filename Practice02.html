@@ -11,7 +11,7 @@
   <form>
     <p>FizzNum: <input type="text" id="fizzInput" placeholder="整数値を入力して下さい" size="30"></p>
     <p>BuzzNum: <input type="text" id="buzzInput" placeholder="整数値を入力して下さい" size="30"></p>
-    <p><input type="submit" value="送信" id="btn"></p>
+    <p id="btn"><input type="button" value="送信" ></p>
     <ul id="output"></ul>
   </form>
 
@@ -23,30 +23,32 @@
     const output = document.getElementById('output');
 
 
-    document.querySelector('form').addEventListener('submit', e => {
-      e.preventDefault();
+    document.getElementById('btn').onclick = () => {
 
       const fizzNum = parseFloat(fizzForm.value);
       const buzzNum = parseFloat(buzzForm.value);
 
       for (let i = 1; i <= 100; i++) {
-        const item = document.createElement('li')
 
         if (i % fizzNum === 0 && i % buzzNum === 0) {
+          const item = document.createElement('li')
           item.innerHTML = 'FizzBuzz ' + i;
+          output.appendChild(item);
 
         } else if (i % fizzNum === 0) {
+          const item = document.createElement('li')
           item.textContent = 'Fizz ' + i;
+          output.appendChild(item);
 
         } else if (i % buzzNum === 0) {
+          const item = document.createElement('li')
           item.textContent = 'Buzz ' + i;
-        } else {
-          item.style.display ="none";
+          output.appendChild(item);
         }
-        output.appendChild(item);
+        
       }
 
-    });
+    };
 
   </script>
 </body>
